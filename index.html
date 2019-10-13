@@ -12,7 +12,7 @@
     <!-- <link rel="stylesheet" href="style/style.css">
   <script src="scripts/controller.js"></script> -->
 </head>
-<body ng-app="myApp">    
+<body ng-app="myApp">
   <br>
   <h2 style="text-align: center">Welcome to Hit Or Miss</h2>
 
@@ -38,7 +38,7 @@
 
     const video = document.getElementById('video');
     const canvas = document.getElementById('canvas');
-    const snap = document.getElementById('snap');
+    const photo = document.getElementById('photo');
     const errorMsgElement = document.getElementById('span#ErrorMsg');
 
     const constraints = {
@@ -60,7 +60,7 @@
 
     function handleSuccess(stream){
         window.stream = stream;
-        video.srcObject =stream;
+        video.srcObject = stream;
     }
 
     init();
@@ -68,6 +68,9 @@
     var context = canvas.getContext('2d');
     snap.addEventListener("click", function(){
         context.drawImage(video, 0, 0, 640, 360);
+        context.src = canvas.toDataURL("image/png");
+        var image = context.src.replace("image/png", "image/octet-stream");
+        window.location.href=image;
     });
   </script>
 </body>

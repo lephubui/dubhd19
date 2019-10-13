@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const vision = require('@google-cloud/vision');
+
 // Creates a client
 const client = new vision.ImageAnnotatorClient({
   keyFilename: 'APIK.json'
@@ -8,7 +9,7 @@ const client = new vision.ImageAnnotatorClient({
 
 // Performs label detection on the image file
 client
-  .labelDetection('C:/Users/Public/images/im5.jpg')
+  .labelDetection('/Users/intersect/Downloads/download')
   .then(results => {
     const labels = results[0].labelAnnotations;
 
